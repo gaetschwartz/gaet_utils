@@ -122,6 +122,7 @@ analyzer:
 
     invalid_annotation_target: ignore
     sort_pub_dependencies: ignore
+    avoid_as: ignore
 
 # LINTER Preferences
 #
