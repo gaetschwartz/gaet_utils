@@ -44,9 +44,11 @@ class DoubleInterval {
 }
 
 class Responsive {
-  const Responsive(this.smallScreenWidth, this.bigScreenWidth);
-
-  static const default_ = Responsive(400, 1200);
+  const Responsive({
+    this.smallScreenWidth = 600,
+    this.bigScreenWidth = 1200,
+  });
+  const Responsive.custom(this.smallScreenWidth, this.bigScreenWidth);
 
   final double smallScreenWidth;
   final double bigScreenWidth;
@@ -73,10 +75,10 @@ class Responsive {
   bool isMedium(BoxConstraints c) =>
       c.maxWidth >= smallScreenWidth && c.maxWidth <= bigScreenWidth;
 
-  ScreenSize getScreenSize(BuildContext context) =>
-      getSizeOfWidth(MediaQuery.of(context).size.shortestSide);
+  ScreenSize screenSize(BuildContext context) =>
+      sizeOfWidth(MediaQuery.of(context).size.shortestSide);
 
-  ScreenSize getSizeOfWidth(double width) {
+  ScreenSize sizeOfWidth(double width) {
     if (width > bigScreenWidth) {
       return ScreenSize.large;
     } else if (width > smallScreenWidth) {
